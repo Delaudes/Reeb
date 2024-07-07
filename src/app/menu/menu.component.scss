@@ -1,0 +1,62 @@
+.section {
+  padding: 8px;
+  margin-top: 24px;
+  border: darkgreen 0.1px solid;
+  border-radius: 0.375rem;
+}
+
+.sous-section {
+  padding: 8px;
+  margin-top: 16px;
+  border: goldenrod 0.1px dashed;
+  border-radius: 0.375rem;
+}
+
+.consommation {
+  margin-top: 8px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  border-radius: 0.375rem;
+}
+
+.contenu {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.titre {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 10px;
+  color: darkslategray;
+}
+
+.prix {
+  margin-left: 8px;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  color: darkgreen;
+}
+
+.presentation {
+  display: flex;
+  align-items: center;
+}
+
+.section-titre {
+  font-size: 24px;
+  text-align: center;
+  font-weight: 700;
+  color: darkgreen;
+}
+
+.sous-section-titre {
+  font-size: 18px;
+  font-weight: 600;
+  color: goldenrod;
+}
