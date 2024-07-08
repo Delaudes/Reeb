@@ -1,0 +1,23 @@
+.header {
+  margin-left: -16px;
+  margin-right: -16px;
+  margin-top: -16px;
+  background-color: darkgreen;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.nom {
+  color: white;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
+.nous {
+  color: goldenrod;
+  font-size: 12px;
+  font-weight: 600;
+}

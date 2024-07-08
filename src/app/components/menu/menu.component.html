@@ -1,0 +1,30 @@
+<app-header [nomEntreprise]="menu?.entreprise?.nom"></app-header>
+<div class="menu">
+  <div
+    class="section"
+    *ngFor="let section of menu?.sections"
+    id="{{ 'section-' + section.id }}"
+  >
+    <div class="section-titre">{{ section.titre }}</div>
+
+    <div class="sous-section" *ngFor="let sousSection of section.sousSections">
+      <div class="sous-section-titre">{{ sousSection.titre }}</div>
+      <div
+        class="consommation"
+        *ngFor="let consommation of sousSection.consommations"
+      >
+        <app-consommation [consommation]="consommation"></app-consommation>
+      </div>
+    </div>
+    <div
+      class="consommation"
+      *ngFor="let consommation of section.consommations"
+    >
+      <app-consommation [consommation]="consommation"></app-consommation>
+    </div>
+  </div>
+</div>
+<app-filtres
+  [sections]="menu?.sections"
+  (onCliqueSection)="scrollToSection($event)"
+></app-filtres>

@@ -5,4 +5,5 @@ export class Section {
     readonly sousSections: SousSection[] = []
     readonly consommations: Consommation[] = []
     readonly titre: string = 'Titre section'
+    readonly id: number = 0
 }

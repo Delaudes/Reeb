@@ -1,0 +1,9 @@
+<div class="sidebar-horizontale">
+  <div
+    class="section-titre"
+    *ngFor="let section of sections"
+    (click)="scrollToSection(section.id)"
+  >
+    {{ section.titre }}
+  </div>
+</div>

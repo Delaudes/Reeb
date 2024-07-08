@@ -1,0 +1,30 @@
+.contenu {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.titre {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 10px;
+  color: darkslategray;
+  line-height: 0.75rem;
+  margin-top: 4px;
+}
+
+.prix {
+  margin-left: 8px;
+  display: flex;
+  font-weight: 700;
+  align-items: center;
+  color: darkgreen;
+}
+
+.textes {
+  display: flex;
+  flex-direction: column;
+}
