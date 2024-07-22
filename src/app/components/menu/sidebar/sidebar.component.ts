@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Section } from '../../domain/models/section';
+
 import { CommonModule } from '@angular/common';
+import { Section } from '../../../domain/models/section';
 
 @Component({
   selector: 'app-sidebar',

@@ -1,0 +1,22 @@
+<div class="header">
+  <img
+    src="assets/accueil.svg"
+    alt="Bouton d'accueil"
+    (click)="router.navigate([''])"
+  />
+  <div class="textes" *ngIf="nomEntreprise">
+    <span class="nom">
+      {{ nomEntreprise }}
+    </span>
+    <span class="nous">by Reeb</span>
+  </div>
+  <div class="textes" *ngIf="!nomEntreprise">
+    <span class="nom">Reeb</span>
+    <span class="nous">CHOOSE FAST</span>
+  </div>
+  <img
+    src="assets/connexion.svg"
+    alt="Bouton de connexion"
+    (click)="router.navigate(['connexion'])"
+  />
+</div>

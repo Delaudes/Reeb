@@ -2,12 +2,12 @@
 import { Component, ElementRef, Inject, OnDestroy, OnInit } from '@angular/core';
 import { Menu } from '../../domain/models/menu';
 import { CommonModule } from '@angular/common';
-import { ConsommationComponent } from '../consommation/consommation.component';
-import { HeaderComponent } from '../header/header.component';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { ConsommationComponent } from './consommation/consommation.component';
+import { HeaderComponent } from '../shared/header/header.component';
 import { IMenuGestionnaire } from '../../domain/ports/api/i-menu-gestionnaire';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'app-menu',
@@ -20,7 +20,10 @@ export class MenuComponent implements OnInit, OnDestroy {
   menu?: Menu
   souscriptions: Subscription[] = []
 
-  constructor(private activatedRoute: ActivatedRoute, private elementRef: ElementRef, @Inject('IMenuGestionnaire') private menuService: IMenuGestionnaire) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    @Inject('IMenuGestionnaire') private menuService: IMenuGestionnaire) { }
+
   async ngOnInit(): Promise<void> {
     const idMenu: string | null = this.activatedRoute.snapshot.paramMap.get('id')
     if (idMenu) {
@@ -31,14 +34,14 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   scrollToSection(ancreSection: string) {
-    const element = this.elementRef.nativeElement.querySelector(`#${ancreSection}`);
+    const element = document.querySelector(`#${ancreSection}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
   ngOnDestroy(): void {
-    this.souscriptions.forEach(souscription => souscription.unsubscribe())
+    this.souscriptions.forEach(souscription => { souscription.unsubscribe() })
   }
 }
 

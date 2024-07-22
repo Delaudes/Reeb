@@ -5,6 +5,11 @@
   background-color: darkgreen;
   padding: 16px;
   display: flex;
+  justify-content: space-between;
+}
+
+.textes {
+  display: flex;
   flex-direction: column;
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -18,7 +23,11 @@
 }
 
 .nous {
-  color: goldenrod;
-  font-size: 14px;
+  color: darkgoldenrod;
+  font-size: 12px;
   font-weight: 600;
+}
+
+img:hover {
+  cursor: pointer;
 }

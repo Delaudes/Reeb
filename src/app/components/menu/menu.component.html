@@ -1,4 +1,9 @@
 <app-header [nomEntreprise]="menu?.entreprise?.nom"></app-header>
+<app-sidebar
+  class="sidebar-web"
+  [sections]="menu?.sections"
+  (onCliqueSection)="scrollToSection($event)"
+></app-sidebar>
 <div class="menu">
   <div
     class="section"
@@ -17,7 +22,7 @@
       </div>
     </div>
     <div
-      class="consommation"
+      class="consommation sans-sous-section"
       *ngFor="let consommation of section.consommations"
     >
       <app-consommation [consommation]="consommation"></app-consommation>
@@ -25,6 +30,7 @@
   </div>
 </div>
 <app-sidebar
+  class="sidebar-mob"
   [sections]="menu?.sections"
   (onCliqueSection)="scrollToSection($event)"
 ></app-sidebar>
