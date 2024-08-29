@@ -14,4 +14,6 @@ export class Menu {
         })
         this.entreprise = new Entreprise(menuDto.entreprise)
     }
+
+
 }

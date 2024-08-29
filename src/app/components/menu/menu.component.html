@@ -5,20 +5,50 @@
   (onCliqueSection)="scrollToSection($event)"
 ></app-sidebar>
 <div class="menu">
+  <div *ngIf="utilisateurStore.peutEditer(+idMenu!)" class="ajout-section">
+    + section
+  </div>
   <div
     class="section"
     *ngFor="let section of menu?.sections"
     id="{{ 'section-' + section.id }}"
   >
-    <div class="section-titre">{{ section.titre }}</div>
-
+    <div class="section-titre">
+      {{ section.titre
+      }}<img
+        class="edit"
+        *ngIf="utilisateurStore.peutEditer(+idMenu!)"
+        src="assets/edition.svg"
+        alt="Bouton d'edition"
+      />
+    </div>
+    <div
+      *ngIf="utilisateurStore.peutEditer(+idMenu!)"
+      class="ajout-sous-section"
+    >
+      + sous-section
+    </div>
     <div class="sous-section" *ngFor="let sousSection of section.sousSections">
-      <div class="sous-section-titre">{{ sousSection.titre }}</div>
+      <div class="sous-section-titre">
+        {{ sousSection.titre }}
+        <img
+          class="edit"
+          *ngIf="utilisateurStore.peutEditer(+idMenu!)"
+          src="assets/edition.svg"
+          alt="Bouton d'edition"
+        />
+      </div>
       <div
         class="consommation"
         *ngFor="let consommation of sousSection.consommations"
       >
         <app-consommation [consommation]="consommation"></app-consommation>
+      </div>
+      <div
+        *ngIf="utilisateurStore.peutEditer(+idMenu!)"
+        class="ajout-sous-section"
+      >
+        + sous-section
       </div>
     </div>
     <div
@@ -26,6 +56,9 @@
       *ngFor="let consommation of section.consommations"
     >
       <app-consommation [consommation]="consommation"></app-consommation>
+    </div>
+    <div *ngIf="utilisateurStore.peutEditer(+idMenu!)" class="ajout-section">
+      + section
     </div>
   </div>
 </div>

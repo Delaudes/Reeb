@@ -1,1 +1,67 @@
-<p>connexion works!</p>
+<app-header></app-header>
+<div class="form-div">
+  <form class="form" (ngSubmit)="valider()">
+    <span class="titre" *ngIf="!estNouveauClient">Connectez-vous</span>
+    <span class="titre" *ngIf="estNouveauClient">Nouveau compte</span>
+    <div class="input-div">
+      <label class="label">E-mail</label>
+      <input
+        class="input"
+        type="email"
+        placeholder="exemple@domaine.com"
+        [(ngModel)]="email"
+        name="email"
+      />
+    </div>
+    <div class="input-div" *ngIf="estNouveauClient">
+      <label class="label">Nom de votre établissement</label>
+      <input
+        class="input"
+        type="text"
+        placeholder="Café de la place"
+        [(ngModel)]="nomEtablissement"
+        name="nomEtablissement"
+      />
+    </div>
+    <div class="input-div">
+      <label class="label">Mot de passe</label>
+      <input
+        class="input"
+        type="password"
+        placeholder="Entrez votre mot de passe"
+        [(ngModel)]="motDePasse"
+        name="motDePasse"
+      />
+    </div>
+    <div class="input-div" *ngIf="estNouveauClient">
+      <label class="label">Confirmez votre mot de passe</label>
+      <input
+        class="input"
+        type="password"
+        placeholder="Entrez à nouveau votre mot de passe"
+        [(ngModel)]="confirmationMotDePasse"
+        name="confirmationMotDePasse"
+      />
+    </div>
+    <div class="boutons">
+      <span
+        (click)="estNouveauClient = !estNouveauClient"
+        *ngIf="estNouveauClient"
+        class="lien"
+        >Compte existant ?</span
+      >
+      <span
+        (click)="estNouveauClient = !estNouveauClient"
+        *ngIf="!estNouveauClient"
+        class="lien"
+        >Nouveau ?</span
+      >
+      <button *ngIf="!estNouveauClient" type="submit" class="form-validation">
+        Se connecter
+      </button>
+      <button *ngIf="estNouveauClient" type="submit" class="form-validation">
+        Créer
+      </button>
+    </div>
+  </form>
+</div>

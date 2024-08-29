@@ -7,7 +7,14 @@
   <div class="textes" *ngIf="nomEntreprise">
     <span class="nom">
       {{ nomEntreprise }}
+      <img
+        class="edit"
+        *ngIf="peutEditer()"
+        src="assets/edition.svg"
+        alt="Bouton d'edition"
+      />
     </span>
+
     <span class="nous">by Reeb</span>
   </div>
   <div class="textes" *ngIf="!nomEntreprise">
@@ -15,8 +22,15 @@
     <span class="nous">CHOOSE FAST</span>
   </div>
   <img
+    *ngIf="!utilisateurStore.estConnecte()"
     src="assets/connexion.svg"
     alt="Bouton de connexion"
     (click)="router.navigate(['connexion'])"
+  />
+  <img
+    *ngIf="utilisateurStore.estConnecte()"
+    src="assets/deconnexion.svg"
+    alt="Bouton de déconnexion"
+    (click)="seDeconnecter()"
   />
 </div>

@@ -6,8 +6,9 @@ import { ConsommationComponent } from './consommation/consommation.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { IMenuGestionnaire } from '../../domain/ports/api/i-menu-gestionnaire';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { IUtilisateurStore } from '../../domain/ports/spi/i-utilisateur-store';
 
 @Component({
   selector: 'app-menu',
@@ -19,17 +20,22 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 export class MenuComponent implements OnInit, OnDestroy {
   menu?: Menu
   souscriptions: Subscription[] = []
+  idMenu: string | null = null
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    @Inject('IMenuGestionnaire') private menuService: IMenuGestionnaire) { }
+    protected activatedRoute: ActivatedRoute,
+    private router: Router,
+    @Inject('IMenuGestionnaire') private menuService: IMenuGestionnaire,
+    @Inject('IUtilisateurStore') protected utilisateurStore: IUtilisateurStore) { }
 
   async ngOnInit(): Promise<void> {
-    const idMenu: string | null = this.activatedRoute.snapshot.paramMap.get('id')
-    if (idMenu) {
-      this.souscriptions.push(this.menuService.getMenu(+idMenu).subscribe((menu) => {
+    this.idMenu = this.activatedRoute.snapshot.paramMap.get('id')
+    if (this.idMenu) {
+      this.souscriptions.push(this.menuService.getMenu(+this.idMenu).subscribe((menu) => {
         this.menu = menu
       }))
+    } else {
+      this.router.navigate(['accueil'])
     }
   }
 
@@ -43,5 +49,6 @@ export class MenuComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.souscriptions.forEach(souscription => { souscription.unsubscribe() })
   }
+
 }
 

@@ -1,23 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ConnexionComponent } from './connexion.component';
+import { createComponentFactory, Spectator } from "@ngneat/spectator";
+import { HeaderComponent } from "../shared/header/header.component";
+import { ConnexionComponent } from "./connexion.component";
 
 describe('ConnexionComponent', () => {
-  let component: ConnexionComponent;
-  let fixture: ComponentFixture<ConnexionComponent>;
+  let spectator: Spectator<ConnexionComponent>;
+  const createComponent = createComponentFactory({
+    component: ConnexionComponent,
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ConnexionComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(ConnexionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  });
+
+  beforeEach(() => {
+    spectator = createComponent();
+
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
+  });
+
+  it('should render app-header', () => {
+    expect(spectator.query(HeaderComponent)).toBeTruthy();
+    expect(spectator.query(HeaderComponent)?.nomEntreprise).toEqual(undefined)
   });
 });
